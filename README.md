@@ -16,7 +16,7 @@ To run the project, you have two options: using Docker or running it without Doc
    ```bash
    docker-compose up
 4. Access the web application at [localhost:8081](http://localhost:8081).
-5. Access the Pocketbase API and database at [localhost:8090/](http://localhost:8090/_/).
+5. Access the Pocketbase API and database at [localhost:8090](http://localhost:8090/_/).
 
 ### Without Docker
 
@@ -42,7 +42,7 @@ To run the project, you have two options: using Docker or running it without Doc
     cd backend
     ./pocketbase.exe serve
 
-7. Access the Pocketbase API and database at [localhost:8090/](http://localhost:8090/_/).
+7. Access the Pocketbase API and database at [localhost:8090](http://localhost:8090/_/).
 
 ## Project Structure
 
