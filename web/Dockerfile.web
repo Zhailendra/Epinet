@@ -1,0 +1,12 @@
+
+FROM node:latest
+
+WORKDIR /web
+
+COPY . .
+
+RUN yarn install --production=false && yarn cache clean
+
+EXPOSE 8081
+
+CMD ["yarn", "start:docker"]
