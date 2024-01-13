@@ -15,8 +15,8 @@ To run the project, you have two options: using Docker or running it without Doc
 3. Run the following command to build and start the containers:
    ```bash
    docker-compose up
-4. Access the web application at [localhost:3000](http://localhost:3000).
-5. Access the Pocketbase API and database at [localhost:8090](http://localhost:8090).
+4. Access the web application at [localhost:8081](http://localhost:8081).
+5. Access the Pocketbase API and database at [localhost:8090/](http://localhost:8090/_/).
 
 ### Without Docker
 
@@ -27,6 +27,7 @@ To run the project, you have two options: using Docker or running it without Doc
 3. Run the following commands to start the web application:
 
     ```bash
+    cd web
     yarn install --production=false
     yarn cache clean
     yarn start
@@ -34,13 +35,14 @@ To run the project, you have two options: using Docker or running it without Doc
 4. Access the web application at [localhost:3000](http://localhost:3000).
 
 5. Open another terminal and navigate to the backend directory.
-
+ 
 6. Run the following command to start the Pocketbase API:
 
-        ```bash
-        ./pocketbase.exe serve
+    ```bash
+    cd backend
+    ./pocketbase.exe serve
 
-7. Access the Pocketbase API and database at [localhost:8090](http://localhost:8090).
+7. Access the Pocketbase API and database at [localhost:8090/](http://localhost:8090/_/).
 
 ## Project Structure
 
