@@ -1,9 +1,135 @@
 /* login.module.scss */
 
 .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+  position: relative;
+  width: 256px;
+  height: 256px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container span {
+  position: absolute;
+  left: 0;
+  width: 32px;
+  height: 5px;
+  background: #2c4766;
+  border-radius: 8px;
+  transform-origin: 128px;
+  transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
+  animation: animateBlink 1s linear infinite;
+  animation-delay: calc(var(--i) * (3s / 50));
+}
+
+@keyframes animateBlink {
+  0% {
+    background: #00fffc;
+  }
+
+  25% {
+    background: #2c4766;
+  }
+}
+
+.loginBox {
+  position: absolute;
+  width: 400px;
+}
+
+.loginBox form {
+  width: 100%;
+  padding: 0 50px;
+}
+
+h2 {
+  font-size: 2em;
+  color: #00fffc;
+  text-align: center;
+}
+.inputBox {
+  position: relative;
+  margin: 25px 0;
+}
+
+.inputBox input {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: 2px solid #2c4766;
+  outline: none;
+  border-radius: 40px;
+  font-size: 1em;
+  color: #fff;
+  padding: 0 20px;
+  transition: 0.5s;
+}
+
+.inputBox input:focus,
+.inputBox input:valid {
+  border-color: #00fffc;
+}
+
+.inputBox label {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  font-size: 1em;
+  color: #fff;
+  pointer-events: none;
+  transition: 0.5s ease;
+}
+
+.inputBox input:focus ~ label,
+.inputBox input:valid ~ label {
+  top: 1px;
+  font-size: 0.8em;
+  background-color: #1f293a;
+  padding: 0 6px;
+  color: #00fffc;
+}
+
+.forgotPassword {
+  margin: -15px 0 10px;
+  text-align: center;
+}
+
+.forgotPassword a {
+  font-size: 0.85em;
+  color: #fff;
+  text-decoration: none;
+}
+
+.forgotPassword a:hover {
+  text-decoration: underline;
+}
+
+.button {
+  width: 100%;
+  height: 45px;
+  border-radius: 45px;
+  background: #00fffc;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 1em;
+  color: #1f293a;
+  font-weight: 600;
+}
+
+.signup {
+  margin: 20px 0 10px;
+  text-align: center;
+}
+
+.signup a {
+  font-size: 1em;
+  color: #00fffc;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.signup a:hover {
+  text-decoration: underline;
 }
