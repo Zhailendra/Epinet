@@ -5,8 +5,8 @@ WORKDIR /web
 
 COPY . .
 
-RUN yarn install --production=false && yarn cache clean
+RUN npm install --production=false
 
 EXPOSE 8081
 
-CMD ["yarn", "start:docker"]
+CMD ["npm", "run", "start:docker"]
