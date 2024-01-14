@@ -20,7 +20,7 @@ To run the project, you have two options: using Docker or running it without Doc
 
 ### Without Docker
 
-1. Make sure you have [Node.js](https://nodejs.org/en) and [Yarn](https://yarnpkg.com/) installed on your machine.
+1. Make sure you have [Node.js](https://nodejs.org/en) installed on your machine.
 
 2. Open a terminal and navigate to the `web` directory.
 
@@ -28,9 +28,8 @@ To run the project, you have two options: using Docker or running it without Doc
 
     ```bash
     cd web
-    yarn install --production=false
-    yarn cache clean
-    yarn start
+    npm install --production=false
+    npm run start
 
 4. Access the web application at [localhost:3000](http://localhost:3000).
 
