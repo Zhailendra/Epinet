@@ -60,6 +60,9 @@ const LoginForm = () => {
     const LoginPage = () => {
         return (
             <div className={styles.loginPage}>
+                <div className={styles.logoContainer}>
+                    <img src="../assets/Logos_Epitech/EPI-LOGO-2023-NOIR.png" alt="Logo" />
+                </div>
                 <div className={styles.loginFormContainer}>
                     <LoginForm/>
                 </div>
