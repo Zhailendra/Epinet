@@ -1,135 +1,111 @@
 /* login.module.scss */
 
-.container {
-  position: relative;
-  width: 256px;
-  height: 256px;
+.loginPage {
+  display: flex;
+  height: 100vh;
+}
+
+.loginFormContainer {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.container span {
-  position: absolute;
-  left: 0;
-  width: 32px;
-  height: 5px;
-  background: #2c4766;
-  border-radius: 8px;
-  transform-origin: 128px;
-  transform: scale(2.2) rotate(calc(var(--i) * (360deg / 50)));
-  animation: animateBlink 1s linear infinite;
-  animation-delay: calc(var(--i) * (3s / 50));
+.slidePage {
+  flex: 0.9;
+  background-color:  #101720;
 }
 
-@keyframes animateBlink {
-  0% {
-    background: #00fffc;
+.loginForm {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+
+  h2 {
+    color: #101720;
+    margin-bottom: 20px;
+    font-size: 32px;
   }
 
-  25% {
-    background: #2c4766;
+  .officeLoginButton {
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: white;
+    color: #101720;
+    border: 2px solid rgba(169, 169, 169, 0.5);
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+
+    img {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
   }
-}
 
-.loginBox {
-  position: absolute;
-  width: 400px;
-}
+  .orDivider {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
 
-.loginBox form {
-  width: 100%;
-  padding: 0 50px;
-}
+    hr {
+      flex: 1;
+      border: none;
+      height: 1px;
+      background-color: rgba(169, 169, 169, 0.5);
+      margin: 0 10px;
+    }
 
-h2 {
-  font-size: 2em;
-  color: #00fffc;
-  text-align: center;
-}
-.inputBox {
-  position: relative;
-  margin: 25px 0;
-}
+    span {
+      color: rgba(169, 169, 169, 0.5);
+    }
+  }
 
-.inputBox input {
-  width: 100%;
-  height: 50px;
-  background: transparent;
-  border: 2px solid #2c4766;
-  outline: none;
-  border-radius: 40px;
-  font-size: 1em;
-  color: #fff;
-  padding: 0 20px;
-  transition: 0.5s;
-}
+  form {
+    display: flex;
+    flex-direction: column;
 
-.inputBox input:focus,
-.inputBox input:valid {
-  border-color: #00fffc;
-}
+    label {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #101720;
+    }
 
-.inputBox label {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  transform: translateY(-50%);
-  font-size: 1em;
-  color: #fff;
-  pointer-events: none;
-  transition: 0.5s ease;
-}
+    input {
+      margin-bottom: 10px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
 
-.inputBox input:focus ~ label,
-.inputBox input:valid ~ label {
-  top: 1px;
-  font-size: 0.8em;
-  background-color: #1f293a;
-  padding: 0 6px;
-  color: #00fffc;
-}
+    input::placeholder {
+      color: rgba(169, 169, 169, 0.5);
+    }
 
-.forgotPassword {
-  margin: -15px 0 10px;
-  text-align: center;
-}
+    .rememberMe {
+      align-items: center;
+      flex-direction: row;
 
-.forgotPassword a {
-  font-size: 0.85em;
-  color: #fff;
-  text-decoration: none;
-}
+      input {
+        margin-right: 5px;
+      }
+    }
 
-.forgotPassword a:hover {
-  text-decoration: underline;
-}
-
-.button {
-  width: 100%;
-  height: 45px;
-  border-radius: 45px;
-  background: #00fffc;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 1em;
-  color: #1f293a;
-  font-weight: 600;
-}
-
-.signup {
-  margin: 20px 0 10px;
-  text-align: center;
-}
-
-.signup a {
-  font-size: 1em;
-  color: #00fffc;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.signup a:hover {
-  text-decoration: underline;
+    button {
+      background-color: #101720;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
 }

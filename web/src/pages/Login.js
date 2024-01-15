@@ -1,86 +1,71 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/login.module.scss';
 
-const Login = () => {
+const LoginForm = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
+
+    const handleLogin = () => {
+        console.log('Email:', email);
+        console.log('Password:', password);
+        console.log('Remember Me:', rememberMe);
+    };
+
     return (
-        <div className={styles.container}>
-            <div className={styles.loginBox}>
-                <h2>Login</h2>
-                <form action="#">
-                    <div className={styles.inputBox}>
-                        <input type="email" required />
-                            <label>Email</label>
-                    </div>
-                    <div className={styles.inputBox}>
-                        <input type="password" required />
-                            <label>Password</label>
-                    </div>
-                    <div className={styles.forgotPassword}>
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                    <button type="submit" className={styles.button}>
-                        Login
-                    </button>
-                    <div className={styles.signup}>
-                        <span>Don't have an account?</span>
-                        <a href="#">Signup</a>
-                    </div>
-                </form>
+        <div className={styles.loginForm}>
+            <h2>Login</h2>
+            <button className={styles.officeLoginButton}>
+                <img src="../assets/office.png" alt="Office-icon" />
+                Continue with Office
+            </button>
+            <div className={styles.orDivider}>
+                <hr />
+                <span>or Sign in with Email</span>
+                <hr />
             </div>
-
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-            <span ></span>
-
+            <form>
+                <label>Email:</label>
+                <input
+                    type="email"
+                    value={email}
+                    placeholder="login@epitech.eu"
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <label>Password:</label>
+                <input
+                    type="password"
+                    value={password}
+                    placeholder="Password"
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <div className={styles.rememberMe}>
+                    <input
+                        type="checkbox"
+                        id="rememberMe"
+                        checked={rememberMe}
+                        onChange={() => setRememberMe(!rememberMe)}
+                    />
+                    <label htmlFor="rememberMe">Remember Me</label>
+                </div>
+                <button type="button" onClick={handleLogin}>
+                    Login
+                </button>
+            </form>
         </div>
     );
+
 };
 
-export default Login;
+    const LoginPage = () => {
+        return (
+            <div className={styles.loginPage}>
+                <div className={styles.loginFormContainer}>
+                    <LoginForm/>
+                </div>
+                <div className={styles.slidePage}></div>
+            </div>
+        );
+    };
+
+export default LoginPage;
