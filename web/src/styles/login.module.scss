@@ -26,18 +26,15 @@
 
 .slidePage {
   flex: 0.9;
-  background-color:  #101720;
 }
 
 .loginForm {
   width: 50%;
   height: 50%;
   padding: 20px;
-  background-color: white;
   border-radius: 5px;
 
   h2 {
-    color: #101720;
     margin-bottom: 20px;
     font-size: 32px;
   }
@@ -45,9 +42,7 @@
   .officeLoginButton {
     width: 100%;
     margin-bottom: 10px;
-    background-color: white;
-    color: #101720;
-    border: 2px solid rgba(169, 169, 169, 0.5);
+    border: 2px solid;
     padding: 15px;
     border-radius: 5px;
     cursor: pointer;
@@ -71,12 +66,7 @@
       flex: 1;
       border: none;
       height: 1px;
-      background-color: rgba(169, 169, 169, 0.5);
       margin: 0 10px;
-    }
-
-    span {
-      color: rgba(169, 169, 169, 0.5);
     }
   }
 
