@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/login.module.scss';
 import { withTheme } from "../styles/Theme";
 import { login } from "../lib/pocketbase";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+import Cookies from "js-cookie";
 
 const LoginForm = ({ theme }) => {
     const [loading, setLoading] = useState(false);
@@ -19,6 +20,9 @@ const LoginForm = ({ theme }) => {
         try {
             setLoading(true);
             await login(data.email, data.password)
+            if (rememberMe) {
+                Cookies.set('rememberMe', true);
+            }
             navigate('/dashboard');
         } catch (e) {
             if (e.data && e.data.data) {
@@ -41,10 +45,37 @@ const LoginForm = ({ theme }) => {
         }
     }
 
+    useEffect(() => {
+        try {
+            if (Cookies.get('rememberMe')) {
+                navigate('/dashboard')
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    }, []);
+
     return (
         <div className={styles.loginForm} style={{backgroundColor: theme.secondaryColor}}>
             <h2>Login</h2>
-            <button className={styles.officeLoginButton} style={{backgroundColor: theme.secondaryColor, color: theme.primaryColor}}>
+            <button
+                className={styles.officeLoginButton}
+                style={{
+                    backgroundColor: theme.secondaryColor,
+                    color: theme.primaryColor,
+                    borderColor: theme.tertiaryColor,
+                    transition: 'background-color 0.6s, border-color 0.6s',
+                }}
+                // :hover styles
+                onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = '#2A86FF';
+                    e.currentTarget.style.borderColor = '#101720';
+                }}
+                onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = theme.secondaryColor;
+                    e.currentTarget.style.borderColor = theme.tertiaryColor;
+                }}
+            >
                 <img src="/assets/office.png" alt="Office-icon" />
                 Continue with Office
             </button>
@@ -85,7 +116,23 @@ const LoginForm = ({ theme }) => {
                             <p style={{ color: theme.errorColor, marginBottom: '10px', textAlign: "center" }}>{errorMessage}</p>
                         </div>
                     )}
-                    <button type="submit">
+                    <button type="submit"
+                            style={{
+                                backgroundColor: theme.primaryColor,
+                                color: theme.secondaryColor,
+                                borderColor: theme.tertiaryColor,
+                                transition: 'background-color 0.6s, border-color 0.6s',
+                            }}
+                        // :hover styles
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.backgroundColor = '#2A86FF';
+                                e.currentTarget.style.borderColor = '#101720';
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.backgroundColor = theme.primaryColor;
+                                e.currentTarget.style.borderColor = theme.tertiaryColor;
+                            }}
+                    >
                         Login
                     </button>
                 </form>
