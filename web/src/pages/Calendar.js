@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../component/Navbar.js';
 
-const Dashboard = () => {
+const Calendar = () => {
     return (
         <div>
             <Navbar />
@@ -9,4 +9,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Calendar;
