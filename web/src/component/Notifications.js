@@ -1,16 +1,16 @@
 import React from 'react';
-import Layout from "../../component/Layout";
+import Layout from "./Layout";
 
-const Calendar = () => {
+const Notifications = () => {
     return (
         <div>
             <Layout>
                 <div>
-                    <h1>Calendar</h1>
+                    <h1>Notifications</h1>
                 </div>
             </Layout>
         </div>
     );
 };
 
-export default Calendar;
+export default Notifications;

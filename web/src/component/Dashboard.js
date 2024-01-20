@@ -1,16 +1,16 @@
 import React from 'react';
-import Layout from "../../component/Layout";
+import Layout from "./Layout";
 
-const Calendar = () => {
+const Dashboard = () => {
     return (
         <div>
             <Layout>
                 <div>
-                    <h1>Calendar</h1>
+                    <h1>Dashboard</h1>
                 </div>
             </Layout>
         </div>
     );
 };
 
-export default Calendar;
+export default Dashboard;

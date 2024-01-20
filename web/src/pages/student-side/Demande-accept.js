@@ -1,13 +1,14 @@
 import React from 'react';
-import Navbar from '../../component/Navbar.js';
+import Layout from "../../component/Layout";
 
 const Demandesaccept = () => {
     return (
         <div>
-            <Navbar />
-            <div>
-                <h1>Demandesaccept</h1>
-            </div>
+            <Layout>
+                <div>
+                    <h1>Demandes Accept</h1>
+                </div>
+            </Layout>
         </div>
     );
 };
