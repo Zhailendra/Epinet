@@ -16,6 +16,7 @@ export async function fetchData () {
     Cookies.set('userEmail', pb.authStore.model.email, { expires: 7, sameSite: 'None', secure: true })
     Cookies.set('userAvatarLink', pb.authStore.model.avatar, { expires: 7, sameSite: 'None', secure: true })
     Cookies.set('userAvatar', `${url}/api/files/${Cookies.get('userCollectionId')}/${Cookies.get('userId')}/${Cookies.get('userAvatarLink')}`, { expires: 7, sameSite: 'None', secure: true })
+    Cookies.set('adm', pb.authStore.model.adm, { expires: 7, sameSite: 'None', secure: true })
 }
 
 export async function login(email, password) {
@@ -23,4 +24,6 @@ export async function login(email, password) {
     const userToken = getToken();
     Cookies.set('userToken', userToken, { expires: 7, sameSite: 'None', secure: true });
     await fetchData();
+    console.log("Logged in");
+    console.log(pb.authStore.model);
 }
