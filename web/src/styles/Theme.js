@@ -5,5 +5,10 @@ const { ThemeProvider, withTheme } = createTheming({
     tertiaryColor: 'rgba(169, 169, 169, 0.5)',
 
     errorColor: '#FF0000',
+
+    slideBarBg: '#F7F7F7',
+    slideBarBorderShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+    slideBarItemColor: '#101720',
+    slideBarItemHoverColor: '#D3D3D3',
 });
 export { ThemeProvider, withTheme };
