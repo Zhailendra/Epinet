@@ -10,5 +10,6 @@ const { ThemeProvider, withTheme } = createTheming({
     slideBarBorderShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     slideBarItemColor: '#100DB1',
     slideBarItemHoverColor: '#D3D3D3',
+
 });
 export { ThemeProvider, withTheme };
