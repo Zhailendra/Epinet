@@ -14,6 +14,7 @@ import {fetchActivities} from "../lib/pocketbase";
 const ActivityGrid = () => {
     const [activity, setActivity] = useState(null);
     const [filters, setFilters] = useState({
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
         activity: { value: null, matchMode: FilterMatchMode.CONTAINS },
         organizer: { value: null, matchMode: FilterMatchMode.CONTAINS },
         datetime: { value: null, matchMode: FilterMatchMode.CONTAINS },
