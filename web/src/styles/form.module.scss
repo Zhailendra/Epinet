@@ -40,7 +40,7 @@
   }
 
   textarea {
-    max-height: 250px;
+    max-height: 300px;
     overflow-y: auto;
     width: 100%;
     padding: 60px;
@@ -79,6 +79,7 @@
 
     label,
     input {
+      font-weight: normal;
       margin: 0;
     }
   }

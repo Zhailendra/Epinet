@@ -1,7 +1,7 @@
 import Navbar from "./Navbar";
 import styles from "../styles/layout.module.scss";
 import { withTheme } from "../styles/Theme";
-// import {FaRegCalendarAlt} from "react-icons/fa";
+import {FaRegCalendarAlt} from "react-icons/fa";
 import React from "react";
 
 function Layout({ children, theme }) {
@@ -14,7 +14,7 @@ function Layout({ children, theme }) {
             <div className={styles.navBarContainer} style={{backgroundColor: theme.slideBarBg, boxShadow: theme.slideBarBorderShadow}}>
                 <Navbar />
                 <div className={styles.navbarFooter} style={{backgroundColor: theme.primaryColor, color: theme.secondaryColor}}>
-                    {/*<FaRegCalendarAlt />*/}
+                    <FaRegCalendarAlt />
                     <span>{formattedDate}</span>
                 </div>
             </div>

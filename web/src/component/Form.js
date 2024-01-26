@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../styles/form.module.scss";
-import {postNewDemand} from "../lib/pocketbase";
+import { postNewDemand } from "../lib/pocketbase";
 import Cookies from "js-cookie";
+import {withTheme} from "../styles/Theme";
 
-const Form = ({ supportNeed, closePopup, isSolo, handleSoloChange, handleDuoChange }) => {
+const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handleDuoChange }) => {
+    const [error, setError] = useState(null);
+
     useEffect(() => {
         const textarea = document.getElementById('description');
 
@@ -22,9 +25,21 @@ const Form = ({ supportNeed, closePopup, isSolo, handleSoloChange, handleDuoChan
 
     async function handleSend() {
         try {
+            setError(null);
+
             const type = document.getElementById('type').value;
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
+
+            if (!title) {
+                setError('Veuillez remplir le champ "Titre".');
+                return;
+            }
+
+            if (!description) {
+                setError('Veuillez remplir le champ "Description".');
+                return;
+            }
 
             const currentUserLogin = Cookies.get("userLogin");
 
@@ -32,6 +47,12 @@ const Form = ({ supportNeed, closePopup, isSolo, handleSoloChange, handleDuoChan
 
             if (!isSolo) {
                 const login = document.getElementById('login').value;
+
+                if (!login) {
+                    setError('Veuillez remplir le champ "Le login de votre binôme".');
+                    return;
+                }
+
                 logins.push(login);
             }
 
@@ -104,10 +125,12 @@ const Form = ({ supportNeed, closePopup, isSolo, handleSoloChange, handleDuoChan
                     </div>
                 )}
 
+                {error && <div style={{ color: theme.errorColor, textAlign: "center" }}>{error}</div>}
+
                 <button onClick={handleSend}>Envoyer</button>
             </div>
         </div>
     );
 };
 
-export default Form;
+export default withTheme(Form);

@@ -4,7 +4,7 @@ import Form from "./Form";
 
 const DemandCard = ({ status, title, description, buttonText }) => {
 
-    const supportNeed = true;
+    const supportNeed = false;
 
     const [showPopup, setShowPopup] = useState(false);
     const [isSolo, setIsSolo] = useState(true);

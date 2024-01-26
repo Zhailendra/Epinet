@@ -30,7 +30,7 @@ const Navbar = ({ theme }) => {
     const userCategories = [
         { image: '/assets/dashboard.png', text: 'Mon Dashboard', link: '/dashboard' },
         { image: '/assets/demandes.png', text: 'Mes Demandes', link: '/mes-demandes' },
-        { image: '/assets/demandes.png', text: 'Demande acceptée', link: '/demande-accept'},
+        { image: '/assets/demandes.png', text: 'Demandes acceptées', link: '/demande-accept'},
         { image: '/assets/notification.png', text: 'Notifications', link: '/notifications' },
     ];
 

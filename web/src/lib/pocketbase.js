@@ -15,8 +15,6 @@ export async function fetchData () {
     Cookies.set('userCollectionId', pb.authStore.model.collectionId, { expires: 7, sameSite: 'None', secure: true })
     Cookies.set('userName', pb.authStore.model.name, { expires: 7, sameSite: 'None', secure: true })
     Cookies.set('userLogin', pb.authStore.model.email, { expires: 7, sameSite: 'None', secure: true })
-    Cookies.set('userAvatarLink', pb.authStore.model.avatar, { expires: 7, sameSite: 'None', secure: true })
-    Cookies.set('userAvatar', `${url}/api/files/${Cookies.get('userCollectionId')}/${Cookies.get('userId')}/${Cookies.get('userAvatarLink')}`, { expires: 7, sameSite: 'None', secure: true })
     Cookies.set('adm', pb.authStore.model.adm, { expires: 7, sameSite: 'None', secure: true })
 }
 
@@ -33,26 +31,40 @@ export async function login(email, password) {
     console.log(pb.authStore.model);
 }
 
-export async function getLoginsId() {
+export async function getLoginsId(logins) {
     try {
+        const loginsId = [];
+
+        for (let i = 0; i < logins.length; i++) {
+            const filter = `email = '${logins[i]}'`;
+
+            await pb.collection('users').getFullList({
+                sort: '-created',
+                filter,
+            });
+        }
+
+        return loginsId;
     } catch (error) {
-        console.error('Error fetching connected service data:', error);
+        console.error('Error fetching user IDs:', error);
         return [];
     }
 }
 
+
 export async function postNewDemand(type, title, description, logins ,upload) {
 
-    const loginsId = getLoginsId(logins);
+    const loginsId = await getLoginsId(logins);
 
     const data = {
         "Type": type,
         "Title": title,
         "Student_Logins": [
-            loginsId
+            ...loginsId
         ],
-        "Description": description
+        "Description": description,
+        "Support" : upload
     };
 
-    const record = await pb.collection('adminActivityRequests').create(data);
+    await pb.collection('adminActivityRequests').create(data);
 }
