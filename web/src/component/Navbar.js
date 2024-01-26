@@ -16,7 +16,7 @@ const NavbarItem = ({ theme, image, text, link }) => (
     </NavLink>
 );
 
-const Navbar = ({theme}) => {
+const Navbar = ({ theme }) => {
     const isAdmin = Cookies.get('adm') ? Cookies.get('adm') === 'true' : false;
 
     const adminCategories = [
