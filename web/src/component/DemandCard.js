@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from "../styles/mes_demandes.module.scss";
+import styles from "../styles/demandCard.module.scss";
 import Form from "./Form";
 
 const DemandCard = ({ status, title, description, buttonText }) => {

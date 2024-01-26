@@ -1,4 +1,4 @@
-// mes_demandes.module.scss
+// demandCard.module.scss
 
 .demandCard {
   width: 90%;
@@ -13,10 +13,6 @@
     position: relative;
     transition: .15s ease-in;
     border: 2px dotted #E7E7E7;
-    /* &:hover, &:focus-within {
-       box-shadow: 0 0 0 2px #16C79A, 0 10px 60px 0 rgba(#000, .1);
-       transform: translateY(-5px);
-     }*/
   }
 
 
@@ -49,7 +45,7 @@
       border-radius: 50%;
     }
 
-    .in_progress {
+    .default {
       background-color: #E7E7E7;
     }
 

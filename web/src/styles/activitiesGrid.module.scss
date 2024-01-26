@@ -1,0 +1,10 @@
+.activitiesGrid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.activitiesRow {
+  width: 50%;
+  box-sizing: border-box;
+  padding: 16px;
+}
