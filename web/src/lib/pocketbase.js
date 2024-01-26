@@ -19,6 +19,19 @@ export async function fetchData () {
     Cookies.set('adm', pb.authStore.model.adm, { expires: 7, sameSite: 'None', secure: true })
 }
 
+export async function logout() {
+    Cookies.remove('userToken', {sameSite: 'None', secure: true });
+    Cookies.remove('userId', { sameSite: 'None', secure: true});
+    Cookies.remove('userCollectionId', { sameSite: 'None', secure: true});
+    Cookies.remove('userName', { sameSite: 'None', secure: true});
+    Cookies.remove('userEmail ', { sameSite: 'None', secure: true});
+    Cookies.remove('userAvatarLink', { sameSite: 'None', secure: true});
+    Cookies.remove('userAvatar', { sameSite: 'None', secure: true});
+    Cookies.remove('adm', { sameSite: 'None', secure: true});
+    
+    window.location.href = '/login'
+}
+
 export async function login(email, password) {
     await pb.collection("users").authWithPassword(email, password);
     const userToken = getToken();
