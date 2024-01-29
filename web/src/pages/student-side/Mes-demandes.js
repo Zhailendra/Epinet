@@ -2,8 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../component/Layout';
 import DemandCard from '../../component/DemandCard';
-import { fetchActivities, fetchUserLogins } from '../../lib/pocketbase';
+import { fetchNoneAcceptedActivities, fetchUserLogins } from '../../lib/pocketbase';
 import ActivitiesCardGrid from '../../component/ActivitiesCardGrid';
+import styles from "../../styles/mesDemandes.module.scss";
 
 const MesDemandes = () => {
     const [activities, setActivities] = useState([]);
@@ -15,7 +16,7 @@ const MesDemandes = () => {
     const buttonText = 'Faire une demande';
 
     useEffect(() => {
-        Promise.all([fetchActivities(), fetchUserLogins()])
+        Promise.all([fetchNoneAcceptedActivities(), fetchUserLogins()])
             .then(([activitiesData, loginsData]) => {
                 setActivities(activitiesData);
                 setUserLogins(loginsData);
@@ -29,7 +30,9 @@ const MesDemandes = () => {
         <div>
             <Layout>
                 <h1>Mes Demandes</h1>
-                <DemandCard status={status} title={title} description={description} buttonText={buttonText} />
+                <div className={styles.demandCardContainer}>
+                    <DemandCard status={status} title={title} description={description} buttonText={buttonText} />
+                </div>
                 <ActivitiesCardGrid activities={activities} userLogins={userLogins} />
             </Layout>
         </div>

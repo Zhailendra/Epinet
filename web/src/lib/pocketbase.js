@@ -24,6 +24,24 @@ export async function fetchActivities() {
     });
 }
 
+export async function fetchNoneAcceptedActivities() {
+    const resultList = await pb.collection('activities').getList(1, 50, {
+        filter: 'status != "accepted"',
+        sort: '-created',
+    });
+
+    return resultList.items;
+}
+
+export async function fetchAcceptedActivities() {
+    const resultList = await pb.collection('activities').getList(1, 50, {
+        filter: 'status = "accepted"',
+        sort: '-created',
+    });
+
+    return resultList.items;
+}
+
 export async function fetchUserLogins() {
     return await pb.collection('users').getFullList({
         sort: '-created',
@@ -39,39 +57,6 @@ export async function login(email, password) {
     console.log(pb.authStore.model);
 }
 
-export async function getLoginsId(logins) {
-    try {
-        const loginsId = [];
-
-        for (let i = 0; i < logins.length; i++) {
-            const filter = `email = '${logins[i]}'`;
-
-            await pb.collection('users').getFullList({
-                sort: '-created',
-                filter,
-            });
-        }
-
-        return loginsId;
-    } catch (error) {
-        console.error('Error fetching user IDs:', error);
-        return [];
-    }
-}
-
-export async function postNewDemand(type, title, description, logins ,upload) {
-
-    const loginsId = await getLoginsId(logins);
-
-    const data = {
-        "Type": type,
-        "Title": title,
-        "Student_Logins": [
-            ...loginsId
-        ],
-        "Description": description,
-        "Support" : upload
-    };
-
-    await pb.collection('adminActivityRequests').create(data);
+export async function postNewDemand(type, title, description, login ,upload) {
+    console.log("postNewDemand");
 }

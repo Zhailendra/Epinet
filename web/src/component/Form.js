@@ -41,10 +41,6 @@ const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handle
                 return;
             }
 
-            const currentUserLogin = Cookies.get("userLogin");
-
-            let logins = [currentUserLogin];
-
             if (!isSolo) {
                 const login = document.getElementById('login').value;
 
@@ -53,7 +49,6 @@ const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handle
                     return;
                 }
 
-                logins.push(login);
             }
 
             let upload = null;
@@ -62,7 +57,7 @@ const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handle
                 upload = document.getElementById('upload').files[0];
             }
 
-            await postNewDemand(type, title, description, logins, upload);
+            await postNewDemand(type, title, description, upload);
 
             closePopup();
         } catch (e) {

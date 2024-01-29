@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react';
 import { withTheme } from "../styles/Theme";
 import styles from "../styles/card.module.scss";
 
-const Card = ({theme, type, title, organizer, status, description}) => {
+const Card = ({theme, type, title, organizers, status, description}) => {
 
     const [newTitle, setNewTitle] = useState(null);
-    const maxDescriptionLength = 270;
+    const maxDescriptionLength = 150;
     const truncatedDescription =
         description.length > maxDescriptionLength
             ? description.slice(0, maxDescriptionLength) + '...'
@@ -38,7 +38,8 @@ const Card = ({theme, type, title, organizer, status, description}) => {
                 </div>
 
                 <div className={styles.cardOrganizer}>
-                    <p style={{color: color}}>{organizer[0].email}</p>
+                    <p style={{color: color}}>{organizers[0]}</p>
+                    <p style={{color: color}}>{organizers[1]}</p>
                 </div>
 
                 <div className={styles.cardBody}>
@@ -46,10 +47,8 @@ const Card = ({theme, type, title, organizer, status, description}) => {
                 </div>
 
                 <div className={styles.cardFooter} style={{borderColor: theme.tertiaryColor}}>
-                    <div className={styles.cardMeta}>
-                        <button className={styles.cardButton}>Voir détail</button>
-                        <button className={styles.cardButton}>Update</button>
-                    </div>
+                    <button className={styles.cardButton}>Voir détail</button>
+                    <button className={styles.cardButton}>Update</button>
                 </div>
             </article>
         </div>
