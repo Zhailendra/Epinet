@@ -60,3 +60,24 @@ export async function login(email, password) {
 export async function postNewDemand(type, title, description, login ,upload) {
     console.log("postNewDemand");
 }
+
+export async function postActivityUpdated(updatedData, activityId) {
+    let data;
+
+    if (Cookies.get('adm') === 'true') {
+        data = {
+            "coorganizer": updatedData.updatedCoorganizer,
+            "description": updatedData.updatedDescription,
+            "status": updatedData.updatedStatus,
+        };
+    } else {
+        data = {
+            "coorganizer": updatedData.updatedCoorganizer,
+            "description": updatedData.updatedDescription,
+            "status": "waiting_validation",
+        };
+    }
+
+    await pb.collection('activities').update(activityId, data);
+}
+

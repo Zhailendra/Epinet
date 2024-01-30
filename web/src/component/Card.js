@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { withTheme } from "../styles/Theme";
 import styles from "../styles/card.module.scss";
 
-const Card = ({theme, type, title, organizers, status, description, onDetailsClick}) => {
+const Card = ({theme, type, title, organizers, status, description, onDetailsClick, onUpdateClick}) => {
 
     const [newTitle, setNewTitle] = useState(null);
     const maxDescriptionLength = 150;
@@ -11,6 +11,8 @@ const Card = ({theme, type, title, organizers, status, description, onDetailsCli
             ? description.slice(0, maxDescriptionLength) + '...'
             : description;
     const [color, setColor] = useState('');
+    const isWaitingSupport = status === 'waiting_support';
+    const isValidate = status === 'accepted';
 
     useEffect(() => {
         setNewTitle(`{${type}} ${title}`);
@@ -48,7 +50,9 @@ const Card = ({theme, type, title, organizers, status, description, onDetailsCli
 
                 <div className={styles.cardFooter} style={{borderColor: theme.tertiaryColor}}>
                     <button className={styles.cardButton} onClick={() => onDetailsClick({ type, title, organizers, status, description })}>Voir détail</button>
-                    <button className={styles.cardButton}>Update</button>
+                    {!isValidate && (
+                        <button className={styles.cardButton} onClick={() => onUpdateClick({ type, title, organizers, status, description })}>{isWaitingSupport ? "Provide Support" : "Update"}</button>
+                    )}
                 </div>
             </article>
         </div>

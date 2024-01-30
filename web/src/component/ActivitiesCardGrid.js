@@ -8,6 +8,7 @@ import 'react-multi-carousel/lib/styles.css';
 
 const ActivitiesCardGrid = ({ activities, userLogins }) => {
 
+    const [activityId, setActivityId] = useState(null);
     const [type, setType] = useState(null);
     const [title, setTitle] = useState(null);
     const [organizers, setOrganizers] = useState(null);
@@ -71,6 +72,16 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
         setShowDetailPopup(true);
     }
 
+    const getUpdatePopup = (activity) => {
+        setActivityId(activity.id);
+        setType(activity.type);
+        setTitle(activity.title);
+        setOrganizers(getOrganizers(activity, userLogins));
+        setStatus(activity.status);
+        setDescription(activity.description);
+        setShowUpdatePopup(true);
+    }
+
     const activityCards = divideActivitiesIntoRows(activities).map((item, rowIndex) => (
         <div key={rowIndex}>
             {item.map((activity, index) => (
@@ -82,6 +93,7 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
                     status={activity.status}
                     description={activity.description}
                     onDetailsClick={() => getDetailsPopup(activity)}
+                    onUpdateClick={() => getUpdatePopup(activity)}
                 />
             ))}
         </div>
@@ -112,6 +124,17 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
             )}
 
             {/* Update Popup */}
+
+            {showUpdatePopup && (
+                <UpdatePopup
+                    closePopup={handleClosePopup}
+                    activityId={activityId}
+                    title={`{${type}} ${title}`}
+                    organizers={organizers}
+                    status={status}
+                    description={description}
+                />
+            )}
 
         </div>
     );
