@@ -18,8 +18,16 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
     const [showDetailPopup, setShowDetailPopup] = useState(false);
     const [showUpdatePopup, setShowUpdatePopup] = useState(false);
 
-    const handleClosePopup = () => {
+    const handleCloseDetailPopup = () => {
         setShowDetailPopup(false);
+    }
+
+    const handleUpdateClick = () => {
+        setShowDetailPopup(false);
+        setShowUpdatePopup(true);
+    }
+
+    const handleCloseUpdatePopup = () => {
         setShowUpdatePopup(false);
     }
 
@@ -115,7 +123,8 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
 
             {showDetailPopup && (
                 <DetailPopup
-                    closePopup={handleClosePopup}
+                    closeDetailPopup={handleCloseDetailPopup}
+                    handleUpdateClick={handleUpdateClick}
                     title={`{${type}} ${title}`}
                     organizers={organizers}
                     status={status}
@@ -127,7 +136,7 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
 
             {showUpdatePopup && (
                 <UpdatePopup
-                    closePopup={handleClosePopup}
+                    closeUpdatePopup={handleCloseUpdatePopup}
                     activityId={activityId}
                     title={`{${type}} ${title}`}
                     organizers={organizers}

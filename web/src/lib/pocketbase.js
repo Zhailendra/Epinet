@@ -25,21 +25,38 @@ export async function fetchActivities() {
 }
 
 export async function fetchNoneAcceptedActivities() {
-    const resultList = await pb.collection('activities').getList(1, 50, {
+    return await pb.collection('activities').getFullList({
         filter: 'status != "accepted"',
         sort: '-created',
     });
-
-    return resultList.items;
 }
 
 export async function fetchAcceptedActivities() {
-    const resultList = await pb.collection('activities').getList(1, 50, {
+    return await pb.collection('activities').getFullList({
         filter: 'status = "accepted"',
         sort: '-created',
     });
+}
 
-    return resultList.items;
+export async function fetchWaitingForValidationActivities() {
+    return await pb.collection('activities').getFullList({
+        filter: 'status = "waiting_validation"',
+        sort: '-created',
+    });
+}
+
+export async function fetchWaitingForSupportActivities() {
+    return await pb.collection('activities').getFullList({
+        filter: 'status = "waiting_support"',
+        sort: '-created',
+    });
+}
+
+export async function fetchWaitingForPlanificationActivities() {
+    return await pb.collection('activities').getFullList({
+        filter: 'status = "waiting_planification"',
+        sort: '-created',
+    });
 }
 
 export async function fetchUserLogins() {

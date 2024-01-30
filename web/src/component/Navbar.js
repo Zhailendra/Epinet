@@ -21,7 +21,7 @@ const Navbar = ({ theme }) => {
 
     const adminCategories = [
         { image: '/assets/dashboard.png', text: 'Dashboard', link: '/dashboard' },
-        { image: '/assets/demandes.png', text: 'Demandes', link: '/demandes' },
+        { image: '/assets/demandes.png', text: 'Demandes en cours', link: '/demandes' },
         { image: '/assets/support.png', text: 'En attente de support', link: '/support' },
         { image: '/assets/support.png', text: 'En attente de planification', link: '/planification' },
         { image: '/assets/notification.png', text: 'Notifications', link: '/notifications' },
@@ -30,7 +30,7 @@ const Navbar = ({ theme }) => {
     const userCategories = [
         { image: '/assets/dashboard.png', text: 'Mon Dashboard', link: '/dashboard' },
         { image: '/assets/demandes.png', text: 'Mes Demandes', link: '/mes-demandes' },
-        { image: '/assets/demandes.png', text: 'Demandes acceptées', link: '/demande-accept'},
+        { image: '/assets/demandes.png', text: 'Demande(s) acceptée(s)', link: '/demande-accept'},
         { image: '/assets/notification.png', text: 'Notifications', link: '/notifications' },
     ];
 

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { withTheme } from "../styles/Theme";
 import styles from "../styles/card.module.scss";
+import Cookies from "js-cookie";
 
 const Card = ({theme, type, title, organizers, status, description, onDetailsClick, onUpdateClick}) => {
 
@@ -13,6 +14,7 @@ const Card = ({theme, type, title, organizers, status, description, onDetailsCli
     const [color, setColor] = useState('');
     const isWaitingSupport = status === 'waiting_support';
     const isValidate = status === 'accepted';
+    const isAdm = Cookies.get('adm') === 'true';
 
     useEffect(() => {
         setNewTitle(`{${type}} ${title}`);
@@ -51,7 +53,7 @@ const Card = ({theme, type, title, organizers, status, description, onDetailsCli
                 <div className={styles.cardFooter} style={{borderColor: theme.tertiaryColor}}>
                     <button className={styles.cardButton} onClick={() => onDetailsClick({ type, title, organizers, status, description })}>Voir détail</button>
                     {!isValidate && (
-                        <button className={styles.cardButton} onClick={() => onUpdateClick({ type, title, organizers, status, description })}>{isWaitingSupport ? "Provide Support" : "Update"}</button>
+                        <button className={styles.cardButton} onClick={() => onUpdateClick({ type, title, organizers, status, description })}>{isAdm ? "Vérifier" : isWaitingSupport  ? "Provide Support" : "Update"}</button>
                     )}
                 </div>
             </article>

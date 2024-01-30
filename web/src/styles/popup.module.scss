@@ -15,25 +15,23 @@
   }
 }
 
+.organizers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+
+  input {
+    margin-top: 1rem;
+  }
+}
+
 .popupBody {
   padding: 1rem;
   background-color: #fff;
+  border-top: 1px solid #e0e0e0;
   border-bottom: 1px solid #e0e0e0;
-
-  h3 {
-    margin-top: 1rem;
-  }
-
-  .organizers {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1rem;
-
-    input {
-      margin-top: 1rem;
-    }
-  }
 
   .information {
 
@@ -48,7 +46,7 @@
       }
 
       select {
-        width: 190px;
+        width: 210px;
         border: 1px solid #ccc;
         border-radius: 5px;
         padding: 0 0.5rem;
@@ -69,6 +67,10 @@
 
       .waiting_validation {
         background-color: #FFCD29;
+      }
+
+      .waiting_planification {
+        background-color: #482ebd;
       }
 
       .accepted {

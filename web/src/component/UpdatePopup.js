@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Cookies from "js-cookie";
 import styles from '../styles/popup.module.scss';
 import container from '../styles/form.module.scss';
 import {postActivityUpdated} from "../lib/pocketbase";
 
-const UpdatePopup = ({ closePopup, activityId, title, organizers, status, description }) => {
+const UpdatePopup = ({ closeUpdatePopup, activityId, title, organizers, status, description }) => {
     const [updatedData, setUpdatedData] = useState({
         /*updatedOrganizer: organizers[0],*/
         updatedCoorganizer: organizers[1],
@@ -22,24 +22,23 @@ const UpdatePopup = ({ closePopup, activityId, title, organizers, status, descri
         } catch (e) {
             console.log(e);
         }
-        closePopup();
+        closeUpdatePopup();
     };
 
     return (
         <div className={container.popup}>
             <div className={container.popupContent}>
-                <span className={container.closeButton} onClick={closePopup}>
+                <span className={container.closeButton} onClick={closeUpdatePopup}>
                     &#10006;
                 </span>
                 <div className={styles.popupHeader}>
                     <h2>{title}</h2>
                 </div>
-                <div className={styles.popupBody}>
-                    <div className={styles.organizers}>
-                        <p>{organizers[0]}</p>
-                        <p>{organizers[1]}</p>
+                <div className={styles.organizers}>
+                    <p>{organizers[0]}</p>
+                    <p>{organizers[1]}</p>
 
-                        {/*{isAdm ? (
+                    {/*{isAdm ? (
                             <input
                                 type="text"
                                 value={updatedData.updatedOrganizer}
@@ -59,17 +58,17 @@ const UpdatePopup = ({ closePopup, activityId, title, organizers, status, descri
                             />
                         )}*/}
 
-                        <input
-                            type="text"
-                            value={updatedData.updatedCoorganizer}
-                            onChange={(e) => setUpdatedData({
-                                ...updatedData,
-                                updatedCoorganizer: e.target.value,
-                            })}
-                        />
+                    <input
+                        type="text"
+                        value={updatedData.updatedCoorganizer}
+                        onChange={(e) => setUpdatedData({
+                            ...updatedData,
+                            updatedCoorganizer: e.target.value,
+                        })}
+                    />
 
-                    </div>
-                    <hr />
+                </div>
+                <div className={styles.popupBody}>
                     <h3>Information :</h3>
                     <div className={styles.information}>
                         <div className={styles.statusIconContent}>
@@ -81,6 +80,7 @@ const UpdatePopup = ({ closePopup, activityId, title, organizers, status, descri
                                 >
                                     <option value="waiting_support">Waiting Support</option>
                                     <option value="waiting_validation">Waiting Validation</option>
+                                    <option value="waiting_planification">Waiting Planification</option>
                                     <option value="accepted">Accepted</option>
                                     <option value="refused">Refused</option>
                                 </select>
@@ -105,7 +105,7 @@ const UpdatePopup = ({ closePopup, activityId, title, organizers, status, descri
                     </div>
                 </div>
                 <div className={styles.popupFooter}>
-                    <button onClick={handleUpdate}>Update</button>
+                    <button onClick={handleUpdate}>{isAdm ? "Envoyer" : "Valider"}</button>
                 </div>
             </div>
         </div>

@@ -1,24 +1,26 @@
 import React from 'react';
 import styles from "../styles/popup.module.scss";
 import container from "../styles/form.module.scss"
+import Cookies from "js-cookie";
 
-const DetailPopup = ({ closePopup, title, organizers, status, description }) => {
+const DetailPopup = ({ closeDetailPopup, handleUpdateClick, title, organizers, status, description }) => {
+
+    const isAdm = Cookies.get('adm') === 'true';
 
     return (
         <div className={container.popup}>
             <div className={container.popupContent}>
-                <span className={container.closeButton} onClick={closePopup}>
+                <span className={container.closeButton} onClick={closeDetailPopup}>
                     &#10006;
                 </span>
                 <div className={styles.popupHeader}>
                     <h2>{title}</h2>
                 </div>
+                <div className={styles.organizers}>
+                    <p>{organizers[0]}</p>
+                    <p>{organizers[1]}</p>
+                </div>
                 <div className={styles.popupBody}>
-                    <div className={styles.organizers}>
-                        <p>{organizers[0]}</p>
-                        <p>{organizers[1]}</p>
-                    </div>
-                    <hr />
                     <h3>Information :</h3>
                     <div className={styles.information}>
                         <div className={styles.statusIconContent}>
@@ -31,6 +33,9 @@ const DetailPopup = ({ closePopup, title, organizers, status, description }) => 
                             <p>{description}</p>
                         </div>
                     </div>
+                </div>
+                <div className={styles.popupFooter}>
+                    <button onClick={handleUpdateClick}>{isAdm ? "Vérifier" : "Update"}</button>
                 </div>
             </div>
         </div>
