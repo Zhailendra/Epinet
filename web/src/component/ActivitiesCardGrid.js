@@ -1,10 +1,26 @@
 // ActivitiesCardGrid.js
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Card from './Card';
+import DetailPopup from "./DetailPopup";
+import UpdatePopup from "./UpdatePopup";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 const ActivitiesCardGrid = ({ activities, userLogins }) => {
+
+    const [type, setType] = useState(null);
+    const [title, setTitle] = useState(null);
+    const [organizers, setOrganizers] = useState(null);
+    const [status, setStatus] = useState(null);
+    const [description, setDescription] = useState(null);
+
+    const [showDetailPopup, setShowDetailPopup] = useState(false);
+    const [showUpdatePopup, setShowUpdatePopup] = useState(false);
+
+    const handleClosePopup = () => {
+        setShowDetailPopup(false);
+        setShowUpdatePopup(false);
+    }
 
     const responsive = {
         superLargeDesktop: {
@@ -46,6 +62,15 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
         return organizers;
     }
 
+    const getDetailsPopup = (activity) => {
+        setType(activity.type);
+        setTitle(activity.title);
+        setOrganizers(getOrganizers(activity, userLogins));
+        setStatus(activity.status);
+        setDescription(activity.description);
+        setShowDetailPopup(true);
+    }
+
     const activityCards = divideActivitiesIntoRows(activities).map((item, rowIndex) => (
         <div key={rowIndex}>
             {item.map((activity, index) => (
@@ -56,6 +81,7 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
                     organizers={getOrganizers(activity, userLogins)}
                     status={activity.status}
                     description={activity.description}
+                    onDetailsClick={() => getDetailsPopup(activity)}
                 />
             ))}
         </div>
@@ -63,9 +89,30 @@ const ActivitiesCardGrid = ({ activities, userLogins }) => {
 
     return (
         <div>
-            <Carousel responsive={responsive}>
-                {activityCards}
-            </Carousel>
+            {activities.length > 0 ? (
+                <Carousel responsive={responsive}>
+                    {activityCards}
+                </Carousel>
+            ) : (
+                <p style={{display: "flex", justifyContent: "center", alignItems: "center", fontWeight: "bold", fontSize: "1.5rem"}}>
+                    Aucune activité validée pour le moment
+                </p>
+            )}
+
+            {/* Detail Popup */}
+
+            {showDetailPopup && (
+                <DetailPopup
+                    closePopup={handleClosePopup}
+                    title={`{${type}} ${title}`}
+                    organizers={organizers}
+                    status={status}
+                    description={description}
+                />
+            )}
+
+            {/* Update Popup */}
+
         </div>
     );
 };

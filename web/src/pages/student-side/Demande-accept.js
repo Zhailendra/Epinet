@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Layout from "../../component/Layout";
 import {fetchAcceptedActivities, fetchUserLogins} from "../../lib/pocketbase";
 import ActivitiesCardGrid from "../../component/ActivitiesCardGrid";
+import styles from '../../styles/demandeAccept.module.scss';
 
 const Demandesaccept = () => {
 
@@ -22,8 +23,10 @@ const Demandesaccept = () => {
     return (
         <div>
             <Layout>
-                <h1>Mes Demandes</h1>
-                <ActivitiesCardGrid activities={acceptedActivities} userLogins={userLogins} />
+                <h1>Demande(s) Acceptée(s)</h1>
+                <div className={styles.ActivitiesCardGridContainer}>
+                    <ActivitiesCardGrid activities={acceptedActivities} userLogins={userLogins} />
+                </div>
             </Layout>
         </div>
     );

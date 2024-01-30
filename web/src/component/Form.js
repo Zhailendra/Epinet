@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styles from "../styles/form.module.scss";
 import { postNewDemand } from "../lib/pocketbase";
-import Cookies from "js-cookie";
 import {withTheme} from "../styles/Theme";
 
 const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handleDuoChange }) => {
@@ -72,17 +71,17 @@ const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handle
                     &times;
                 </span>
 
-                <label htmlFor="type">Type</label>
+                <label htmlFor="type"><strong>Type</strong></label>
                 <select id="type" name="type">
                     <option value="Hub">Hub</option>
                     <option value="WorkShop">WorkShop</option>
                     <option value="FocusGroup">FocusGroup</option>
                 </select>
 
-                <label htmlFor="title">Titre</label>
+                <label htmlFor="title"><strong>Titre</strong></label>
                 <input type="text" id="title" name="title" />
 
-                <label>Êtes-vous seul ou en binôme ?</label>
+                <label><strong>Êtes-vous seul ou en binôme ?</strong></label>
                 <div className={styles.soloDuoOption}>
                     <label htmlFor="solo">Seul</label>
                     <input
@@ -105,17 +104,17 @@ const Form = ({ theme, supportNeed, closePopup, isSolo, handleSoloChange, handle
                 </div>
                 {!isSolo && (
                     <div>
-                        <label htmlFor="login">Le login de votre binôme</label>
+                        <label htmlFor="login"><strong>Le login de votre binôme</strong></label>
                         <input type="text" id="login" name="login" />
                     </div>
                 )}
 
-                <label htmlFor="description">Description</label>
+                <label htmlFor="description"><strong>Description</strong></label>
                 <textarea id="description" name="description" />
 
                 {supportNeed && (
                     <div>
-                        <label htmlFor="upload">Upload Support:</label>
+                        <label htmlFor="upload"><strong>Upload Support:</strong></label>
                         <input type="file" id="upload" name="upload" />
                     </div>
                 )}

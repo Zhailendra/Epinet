@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { withTheme } from "../styles/Theme";
 import styles from "../styles/card.module.scss";
 
-const Card = ({theme, type, title, organizers, status, description}) => {
+const Card = ({theme, type, title, organizers, status, description, onDetailsClick}) => {
 
     const [newTitle, setNewTitle] = useState(null);
     const maxDescriptionLength = 150;
@@ -47,7 +47,7 @@ const Card = ({theme, type, title, organizers, status, description}) => {
                 </div>
 
                 <div className={styles.cardFooter} style={{borderColor: theme.tertiaryColor}}>
-                    <button className={styles.cardButton}>Voir détail</button>
+                    <button className={styles.cardButton} onClick={() => onDetailsClick({ type, title, organizers, status, description })}>Voir détail</button>
                     <button className={styles.cardButton}>Update</button>
                 </div>
             </article>
