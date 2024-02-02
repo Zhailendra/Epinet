@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 const DetailPopup = ({ closeDetailPopup, handleUpdateClick, title, organizers, status, description }) => {
 
     const isAdm = Cookies.get('adm') === 'true';
+    const isAccepted = status === 'accepted';
 
     return (
         <div className={container.popup}>
@@ -35,7 +36,9 @@ const DetailPopup = ({ closeDetailPopup, handleUpdateClick, title, organizers, s
                     </div>
                 </div>
                 <div className={styles.popupFooter}>
-                    <button onClick={handleUpdateClick}>{isAdm ? "Vérifier" : "Update"}</button>
+                    {!isAccepted && (
+                        <button onClick={handleUpdateClick}>{isAdm ? "Vérifier" : "Update"}</button>
+                    )}
                 </div>
             </div>
         </div>

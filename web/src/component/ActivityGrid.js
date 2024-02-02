@@ -24,22 +24,20 @@ const ActivityGrid = () => {
     });
     const [loading, setLoading] = useState(true);
     const [globalFilterValue, setGlobalFilterValue] = useState('');
-    const [statuses] = useState(['En attente de Validation', 'En attente de Support', 'Validé', 'Refusé']);
+    const [statuses] = useState(['waiting_validation', 'waiting_support', 'waiting_planification', 'accepted', 'refused']);
 
     const getSeverity = (status) => {
         switch (status) {
-            case 'Refusé':
+            case 'refused':
                 return 'danger';
-
-            case 'Validé':
+            case 'accepted':
                 return 'success';
-
-            case 'En attente de Validation':
+            case 'waiting_validation':
                 return 'info';
-
-            case 'En attente de Support':
+            case 'waiting_support':
                 return 'warning';
-
+            case 'waiting_planification':
+                return 'warning';
             case 'renewal':
                 return null;
         }
