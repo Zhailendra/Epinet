@@ -5,6 +5,7 @@ import { login } from "../lib/pocketbase";
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import Cookies from "js-cookie";
+import { Link } from 'react-router-dom';
 
 const LoginForm = ({ theme }) => {
     const [loading, setLoading] = useState(false);
@@ -135,6 +136,9 @@ const LoginForm = ({ theme }) => {
                     >
                         Login
                     </button>
+                    <p style={{ color: theme.primaryColor, marginTop: '10px' }}>
+                        Don't have an account? <Link to="/signup">Create one</Link>
+                    </p>
                 </form>
             )}
         </div>

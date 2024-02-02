@@ -21,46 +21,46 @@
       }
     ]
   },
-    {
+  {
       "name": "Workshop",
       "description": "",
       "fields": [
         {
-          "name": "name",
-          "label": "Name",
-          "type": "text",
-          "required": true
+            "name": "name",
+            "label": "Name",
+            "type": "text",
+            "required": true
         },
         {
-          "name": "description",
-          "label": "Description",
-          "type": "textarea",
-          "required": false
+            "name": "description",
+            "label": "Description",
+            "type": "textarea",
+            "required": false
         },
         {
-          "name": "test",
-          "label": "Test",
-          "type": "select",
-          "required": true,
-          "options": {
-            "choices": [
-              {
-                "label": "Choice 1",
-                "value": "choice1"
-              },
-              {
-                "label": "Choice 2",
-                "value": "choice2"
-              }
-            ],
-            "maxSelect": 1
-          }
+            "name": "test",
+            "label": "Test",
+            "type": "select",
+            "required": true,
+            "options": {
+                "choices": [
+                    {
+                        "label": "Choice 1",
+                        "value": "choice1"
+                    },
+                    {
+                        "label": "Choice 2",
+                        "value": "choice2"
+                    }
+                ],
+                "maxSelect": 1
+            }
         },
         {
-          "name": "test2",
-          "label": "Test 2",
-          "type": "date",
-          "required": false
+            "name": "test2",
+            "label": "Test 2",
+            "type": "date",
+            "required": false
         },
         {
           "name": "test6",
@@ -81,6 +81,6 @@
           "required": false
         }
       ]
-    }
+  }
   ]
 }
