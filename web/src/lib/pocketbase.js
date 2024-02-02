@@ -3,9 +3,7 @@ import Cookies from 'js-cookie';
 
 const url = process.env.REACT_APP_POCKETBASE_API_URL;
 const pb = new PocketBase(url);
-
 pb.autoCancellation(false);
-
 export function getToken () {
     return pb.authStore.token;
 }
@@ -76,6 +74,10 @@ export async function login(email, password) {
 
 export async function postNewDemand(type, title, description, login ,upload) {
     console.log("postNewDemand");
+}
+
+export async function createOnCollection(collectionName, data) {
+    return await pb.collection(collectionName).create(data);
 }
 
 export async function postActivityUpdated(updatedData, activityId) {

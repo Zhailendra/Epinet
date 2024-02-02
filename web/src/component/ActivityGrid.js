@@ -106,11 +106,11 @@ const ActivityGrid = () => {
         <PrimeReactProvider value={{ unstyled: false }}>
             <div className={style.pDatatable}>
                 <DataTable value={activity} paginator rows={10}  dataKey="id" filters={filters} filterDisplay="row" showGridlines header={header} emptyMessage="Aucune activité." loading={loading}>
-                    <Column field="name" header="Activité" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
-                    <Column field="organizerEmail" header="Organisateur" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
+                    <Column field="title" header="Activité" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
+                    <Column field="organizer" header="Organisateur" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
                     <Column field="datetime" header="Date & Heure" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
                     <Column field="room" header="Salle" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
-                    <Column field="numberpeople" header="Nombre de personnes" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
+                    <Column field="nbPlace" header="Nombre de personnes" alignHeader={"center"} bodyStyle={{ textAlign: "center"}} style={{width: "20%"}} filter filterPlaceholder="Rechercher" />
                     <Column field="status" header="Status" showFilterMenu={false} alignHeader={"center"} bodyStyle={{ textAlign: "center", width: "100%"}} style={{width: "100%"}} body={statusBodyTemplate} filter filterElement={statusRowFilterTemplate} />
                 </DataTable>
             </div>
