@@ -1,0 +1,86 @@
+{
+  "forms": [{
+    "name": "Hubtalk",
+    "description": "qksdjflkjdsqfl",
+    "fields": [
+      {
+        "name": "name",
+        "label": "Name",
+        "type": "text",
+        "required": true,
+        "options": {
+          "placeholder": "Enter activity name",
+          "max": 50
+        }
+      },
+      {
+        "name": "description",
+        "label": "Description",
+        "type": "textarea",
+        "required": false
+      }
+    ]
+  },
+  {
+      "name": "Workshop",
+      "description": "",
+      "fields": [
+        {
+            "name": "name",
+            "label": "Name",
+            "type": "text",
+            "required": true
+        },
+        {
+            "name": "description",
+            "label": "Description",
+            "type": "textarea",
+            "required": false
+        },
+        {
+            "name": "test",
+            "label": "Test",
+            "type": "select",
+            "required": true,
+            "options": {
+                "choices": [
+                    {
+                        "label": "Choice 1",
+                        "value": "choice1"
+                    },
+                    {
+                        "label": "Choice 2",
+                        "value": "choice2"
+                    }
+                ],
+                "maxSelect": 1
+            }
+        },
+        {
+            "name": "test2",
+            "label": "Test 2",
+            "type": "date",
+            "required": false
+        },
+        {
+          "name": "test6",
+          "label": "Test 2",
+          "type": "date",
+          "required": false
+        },
+        {
+          "name": "test9",
+          "label": "Test 2",
+          "type": "date",
+          "required": false
+        },
+        {
+          "name": "test10",
+          "label": "Test 2",
+          "type": "bool",
+          "required": false
+        }
+      ]
+  }
+  ]
+}
