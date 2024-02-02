@@ -5,6 +5,7 @@ import { ThemeProvider } from './styles/Theme';
 /* Pages */
 
 import LoginPage from './pages/Login';
+import SignUpForm from './pages/Create';
 
 /* Common */
 
@@ -32,6 +33,7 @@ const App = () => {
 
                     <Route path="/" element={<LoginPage />} />
                     <Route path="/login" element={<LoginPage />} />
+                    <Route path="/signup" element={<SignUpForm />} />
 
                     /* Common */
 
